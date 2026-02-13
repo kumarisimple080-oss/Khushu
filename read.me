@@ -1,1 +1,97 @@
-valentine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Valentine</title>
+    <style>
+        :root {
+            --pink: #ff4d6d;
+            --dark-pink: #c9184a;
+            --soft-pink: #fff0f3;
+            --white: #ffffff;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--soft-pink);
+            overflow: hidden; color: #4a4a4a;
+        }
+
+        .page {
+            display: none; height: 100vh; width: 100vw;
+            flex-direction: column; justify-content: center;
+            align-items: center; text-align: center;
+            padding: 20px; box-sizing: border-box;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 { color: var(--dark-pink); font-size: 2.5rem; margin-bottom: 10px; }
+        p { font-size: 1.2rem; max-width: 600px; line-height: 1.6; }
+
+        .photo-slot {
+            width: 250px; height: 330px;
+            background: #ddd; border: 8px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 20px; border-radius: 5px; object-fit: cover;
+        }
+
+        .btn {
+            background-color: var(--pink); color: white;
+            border: none; padding: 12px 30px;
+            border-radius: 25px; font-size: 1.2rem;
+            cursor: pointer; margin: 10px;
+            transition: 0.3s; text-decoration: none;
+            display: inline-block;
+        }
+
+        #noBtn {
+            background-color: #888;
+            position: absolute;
+            transition: 0.2s ease;
+            z-index: 999;
+        }
+
+        #yesBtn {
+            z-index: 1000;
+        }
+
+        .btn:hover { background-color: var(--dark-pink); }
+
+        .heart { color: var(--pink); font-size: 50px; }
+
+        .bg-hearts {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -1;
+        }
+
+        .success-msg { display: none; color: var(--dark-pink); font-size: 2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-hearts" id="hearts-bg"></div>
+
+    <div class="page active" id="p1">
+        <div class="heart">❤️</div>
+        <h1>Hey Beautiful...</h1>
+        <p>I wanted to show you how much I care about you.</p>
+        <button class="btn" onclick="nextPage(2)">Click to see</button>
+    </div>
+
+    <div class="page" id="p2">
+        <h1>You are Amazing</h1>
+        <img src="https://via.placeholder.com/250x350?text=Insert+Her+Photo" alt="Her Photo" class="photo-slot">
+        <p>Since the day we met, my life has been so much brighter.</p>
+        <button class="btn" onclick="nextPage(3)">Next</button>
+    </div>
+
+</html>
